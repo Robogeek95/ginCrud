@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/robogeek95/ginCrud/config"
-	"github.com/robogeek95/ginCrud/models"
 	"github.com/robogeek95/ginCrud/routes"
 
 	"github.com/jinzhu/gorm"
@@ -16,7 +15,7 @@ var db *gorm.DB
 
 func main() {
 
-	db, err = gorm.Open("mysql", "robogeek:password@/first_gin?charset=utf8&parseTime=True&loc=Local")
+	// db, err = gorm.Open("mysql", "robogeek:password@/first_gin?charset=utf8&parseTime=True&loc=Local")
 	config.DB, err = gorm.Open("mysql", config.DbURL(config.BuildDBConfig()))
 
 	if err != nil {
@@ -24,10 +23,6 @@ func main() {
 		panic("Can't connect to database")
 	}
 	fmt.Println("connected to database")
-
-	defer db.Close()
-
-	db.AutoMigrate(&models.Material{})
 
 	// Initialize the routes
 	r := routes.SetupRouter()
