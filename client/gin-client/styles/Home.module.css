@@ -1,0 +1,9 @@
+.matCard {
+  text-decoration: none;
+  color: black;
+}
+
+.matCard:hover {
+  color: black;
+  text-decoration: none;
+}

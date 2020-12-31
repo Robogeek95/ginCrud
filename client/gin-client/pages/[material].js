@@ -11,13 +11,13 @@ export default function New() {
         <Col>
           <Row className="mb-4 justify-content-center">
             <Col sm={"auto"}>
-              <h2 className="text-center">New Material</h2>
+              <h2 className="text-center">Kinikan Material</h2>
             </Col>
           </Row>
 
           <Row className="justify-content-center">
             <Col sm={6}>
-              <MaterialForm />
+              <MaterialForm data={[{ name: "hello" }]} />
             </Col>
           </Row>
         </Col>
