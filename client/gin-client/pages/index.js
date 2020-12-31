@@ -1,65 +1,90 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React from "react";
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import Alert from "react-bootstrap/Alert";
+import { Button, Card, CardColumns } from "react-bootstrap";
 
-export default function Home() {
+export default function index() {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>Gin CRUD</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <main>
+        <div className="row pt-5 justify-content-center">
+          <div className="col-auto">
+            <h1 className="text-center">My first gin CRUD app</h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+            <p className="text-center mt-3">
+              <span className="mr-2">Stacks Include</span>
+              <code className="bg-light p-2 rounded mr-2 text-muted">
+                React.js
+              </code>
+              <code className="bg-light p-2 rounded mr-2 text-muted">
+                Next.js
+              </code>
+              <code className="bg-light p-2 rounded mr-2 text-muted">
+                GoLang
+              </code>
+              <code className="bg-light p-2 rounded mr-2 text-muted">
+                Gin Framework
+              </code>
+              <code className="bg-light p-2 rounded mr-2 text-muted">Gorm</code>
+              <code className="bg-light p-2 rounded mr-2 text-muted">
+                MySql
+              </code>
             </p>
-          </a>
+          </div>
+        </div>
+
+        <div className="row my-5">
+          <div className="col-12 rounded p-2 pl-4 bg-light">
+            <Button as="a" href="/new" variant="info">
+              <h5 className="m-0">Create Material</h5>
+            </Button>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-6">
+            <Card href="#">
+              <Card.Body>
+                <Card.Title>The Oasis</Card.Title>
+                <Card.Text>by Akindada</Card.Text>
+                <Card.Text>
+                  This card has supporting text below as a natural lead-in to
+                  additional content.{" "}
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">Created 3 mins ago</small>
+                <br />
+                <small className="text-muted">Last updated 3 mins ago</small>
+              </Card.Footer>
+            </Card>
+          </div>
+
+          <div className="col-6">
+            <Card>
+              <Card.Body>
+                <Card.Title>The Oasis</Card.Title>
+                <Card.Text>by Akindada</Card.Text>
+                <Card.Text>
+                  This card has supporting text below as a natural lead-in to
+                  additional content.{" "}
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">Created 3 mins ago</small>
+                <br />
+                <small className="text-muted">Last updated 3 mins ago</small>
+              </Card.Footer>
+            </Card>
+          </div>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
-  )
+  );
 }
