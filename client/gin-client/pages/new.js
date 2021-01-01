@@ -7,7 +7,7 @@ import MaterialForm from "../components/materialForm";
 export default function New() {
   return (
     <Container>
-      <Row className="mt-5">
+      <Row className="my-5">
         <Col>
           <Row className="mb-4 justify-content-center">
             <Col sm={"auto"}>

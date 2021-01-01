@@ -1,61 +1,133 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Container, Button, Form, Col } from "react-bootstrap";
+import { useFormik } from "formik";
+import axios from "axios";
 
 export default function MaterialForm(props) {
-  let data = props.data;
-
-  const submitForm = (e) => {
-    e.preventDefault();
-
-    console.log(e);
+  let data = {
+    name: "",
+    pages: 0,
+    published: "",
+    author: "",
+    desc: "",
+    rating: 0,
   };
+
+  if (props.data) {
+    data = props.data;
+  }
 
   const confirmDelete = (e) => {
     window.alert("are you sure?");
   };
 
+  const formik = useFormik({
+    initialValues: {
+      name: data.name,
+      pages: data.pages,
+      published: data.published,
+      author: data.author,
+      desc: data.description,
+      rating: data.rating,
+    },
+    onSubmit: async (values) => {
+      // alert(JSON.stringify(values, null, 2));
+      // await axios
+      //   .put(`http://localhost:8080/api/v1/materials/${data.id}`, values)
+      //   .then((res) => {
+      //     alert("data successfully updated");
+      //   })
+      //   .catch((err) => {
+      //     console.log("error", err);
+      //   });
+
+      axios
+        .get(`http://localhost:8080/api/v1/materials`)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    },
+  });
+
   return (
-    <Form onSubmit={submitForm}>
+    <Form onSubmit={formik.handleSubmit}>
       <Form.Group controlId="formGridAddress1">
         <Form.Label>Name</Form.Label>
-        <Form.Control type="text" placeholder="material Name" />
+        <Form.Control
+          type="text"
+          placeholder="material Name"
+          name="name"
+          onChange={formik.handleChange}
+          value={formik.values.name}
+        />
       </Form.Group>
+
+      <Form.Row>
+        <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Label>Pages</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="How many pages"
+            name="pages"
+            onChange={formik.handleChange}
+            value={formik.values.pages}
+          />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formGridState">
+          <Form.Label>Star Rating</Form.Label>
+          <Form.Control
+            as="select"
+            name="rating"
+            onChange={formik.handleChange}
+            value={formik.values.rating}
+          >
+            <option value={0}>Choose...</option>
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+          </Form.Control>
+        </Form.Group>
+      </Form.Row>
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridPassword">
           <Form.Label>Publish Date</Form.Label>
-          <Form.Control type="date" placeholder="publication date" />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Pages</Form.Label>
-          <Form.Control type="number" placeholder="How many pages" />
+          <Form.Control
+            type="date"
+            placeholder="publication date"
+            name="published"
+            onChange={formik.handleChange}
+            value={formik.values.published}
+          />
         </Form.Group>
       </Form.Row>
 
       <Form.Group controlId="formGridAddress2">
         <Form.Label>Author</Form.Label>
-        <Form.Control placeholder="Author's Name" />
+        <Form.Control
+          placeholder="Author's Name"
+          name="author"
+          onChange={formik.handleChange}
+          value={formik.values.author}
+        />
       </Form.Group>
 
-      <Form.Row>
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>Pages</Form.Label>
-          <Form.Control type="number" placeholder="number of pages" />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>Star Rating</Form.Label>
-          <Form.Control as="select" defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Form.Control>
-        </Form.Group>
-      </Form.Row>
+      <Form.Group controlId="description">
+        <Form.Label>Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          name="desc"
+          onChange={formik.handleChange}
+          value={formik.values.desc}
+        />
+      </Form.Group>
 
       {data ? (
         <Row>

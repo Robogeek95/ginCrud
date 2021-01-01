@@ -1,0 +1,38 @@
+[
+  {
+    "id": 2,
+    "name": "Hello world",
+    "pages": "500",
+    "author": "Astroboy",
+    "year": "1805",
+    "rating": "5",
+    "description": "Could not redo 'Move components' across all files. The following files have been closed and modified on disk: /home/robogeek/Documents/goPrac/ginPrac/ginCrud/components.",
+    "published": "1999-01-01",
+    "created": "2020-11-21",
+    "updated": "2021-01-01"
+  },
+  {
+    "id": 3,
+    "name": "3rd material",
+    "pages": "500",
+    "author": "Astroboy",
+    "year": "1805",
+    "rating": "5",
+    "description": "Could not redo 'Move components' across all files. The following files have been closed and modified on disk: /home/robogeek/Documents/goPrac/ginPrac/ginCrud/components.",
+    "published": "1999-01-01",
+    "created": "2019-11-21",
+    "updated": "2020-08-01"
+  },
+  {
+    "id": 6,
+    "name": "Hello world",
+    "pages": "500",
+    "author": "Astroboy",
+    "year": "1805",
+    "rating": "5",
+    "description": "Could not redo 'Move components' across all files. The following files have been closed and modified on disk: /home/robogeek/Documents/goPrac/ginPrac/ginCrud/components.",
+    "published": "1999-01-01",
+    "created": "2010-11-21",
+    "updated": "2010-01-01"
+  }
+]
