@@ -1,0 +1,6 @@
+INFO: 2021/01/02 17:26:42 main.go:47: connecting to database
+INFO: 2021/01/02 17:26:42 main.go:59: connected to database
+INFO: 2021/01/02 17:26:42 main.go:65: serving application
+INFO: 2021/01/02 17:29:38 main.go:47: connecting to database
+INFO: 2021/01/02 17:29:38 main.go:59: connected to database
+INFO: 2021/01/02 17:29:38 main.go:65: serving application
