@@ -114,19 +114,6 @@ export default function MaterialForm(props) {
         </Form.Group>
       </Form.Row>
 
-      <Form.Row>
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Publish Date</Form.Label>
-          <Form.Control
-            type="date"
-            placeholder="publication date"
-            name="published"
-            onChange={formik.handleChange}
-            value={formik.values.published}
-          />
-        </Form.Group>
-      </Form.Row>
-
       <Form.Group controlId="formGridAddress2">
         <Form.Label>Author</Form.Label>
         <Form.Control
@@ -148,7 +135,7 @@ export default function MaterialForm(props) {
         />
       </Form.Group>
 
-      {data ? (
+      {props.data ? (
         <Row>
           <Col>
             <Button variant="info" className="mt-3" onClick={updateData} block>

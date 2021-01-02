@@ -30,7 +30,13 @@ func GetMaterials(c *gin.Context) {
 //CreateMaterial ... Create User
 func CreateMaterial(c *gin.Context) {
 	var material models.Material
-	c.BindJSON(&material)
+
+	if err := c.ShouldBindJSON(&material); err != nil {
+		fmt.Println(err.Error())
+		c.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
+
 	err := models.CreateMaterial(&material)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -61,14 +67,20 @@ func UpdateMaterial(c *gin.Context) {
 	err := models.GetMaterialByID(&material, id)
 
 	if err != nil {
+		fmt.Println(err.Error())
 		c.JSON(http.StatusNotFound, id)
 	}
 
-	c.BindJSON(&material)
+	if err := c.ShouldBindJSON(&material); err != nil {
+		fmt.Println(err.Error())
+		c.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
 
 	// then update it
 	err = models.UpdateMaterial(&material, id)
 	if err != nil {
+		fmt.Println(err.Error())
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
 		c.JSON(http.StatusOK, material)
