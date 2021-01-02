@@ -21,6 +21,21 @@ export default function MaterialForm(props) {
     window.alert("are you sure?");
   };
 
+  const updateData = (e) => {
+    axios
+      .delete(
+        `http://localhost:8080/api/v1/materials/${data.id}`,
+        formik.values
+      )
+      .then((res) => {
+        console.log(res.data);
+        return res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const formik = useFormik({
     initialValues: {
       name: data.name,
@@ -123,13 +138,7 @@ export default function MaterialForm(props) {
       {data ? (
         <Row>
           <Col>
-            <Button
-              variant="info"
-              className="mt-3"
-              onClick={updateData}
-              block
-              type="submit"
-            >
+            <Button variant="info" className="mt-3" onClick={updateData} block>
               Save
             </Button>
           </Col>
