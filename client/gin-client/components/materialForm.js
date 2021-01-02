@@ -31,13 +31,14 @@ export default function MaterialForm(props) {
       rating: data.rating,
     },
     onSubmit: async (values) => {
-      await axios
-        .put(`http://localhost:8080/api/v1/materials/${data.id}`, values)
+      axios
+        .post(`http://localhost:8080/api/v1/materials/`, values)
         .then((res) => {
-          alert("data successfully updated");
+          console.log(res.data);
+          return res.data;
         })
         .catch((err) => {
-          console.log("error", err);
+          console.log(err);
         });
     },
   });
@@ -122,7 +123,13 @@ export default function MaterialForm(props) {
       {data ? (
         <Row>
           <Col>
-            <Button variant="info" className="mt-3" block type="submit">
+            <Button
+              variant="info"
+              className="mt-3"
+              onClick={updateData}
+              block
+              type="submit"
+            >
               Save
             </Button>
           </Col>
