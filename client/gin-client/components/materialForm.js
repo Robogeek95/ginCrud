@@ -41,7 +41,7 @@ export default function MaterialForm(props) {
     axios
       .put(`http://localhost:8080/api/v1/materials/${data.id}`, formik.values)
       .then((res) => {
-        console.log(res.data);
+        alert("successfully updated data");
         return res.data;
       })
       .catch((err) => {
@@ -55,15 +55,15 @@ export default function MaterialForm(props) {
       pages: data.pages,
       published: data.published,
       author: data.author,
-      desc: data.description,
+      desc: data.desc,
       rating: data.rating,
     },
     onSubmit: async (values) => {
       axios
         .post(`http://localhost:8080/api/v1/materials/`, values)
         .then((res) => {
-          console.log(res.data);
-          return res.data;
+          alert("successfully created data");
+          return router.push("/");
         })
         .catch((err) => {
           console.log(err);

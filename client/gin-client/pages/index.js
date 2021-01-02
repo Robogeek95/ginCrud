@@ -103,7 +103,7 @@ export default function index(props) {
                     <Card.Body>
                       <Card.Title>{material.name}</Card.Title>
                       <Card.Text>by {material.author}</Card.Text>
-                      <Card.Text>{material.description}</Card.Text>
+                      <Card.Text>{material.desc}</Card.Text>
                     </Card.Body>
                     <Card.Footer>
                       <small className="text-muted">

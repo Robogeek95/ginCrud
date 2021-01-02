@@ -8,7 +8,7 @@ import (
 type Material struct {
 	ID      uint      `json:"id"`
 	Name    string    `json:"name"`
-	Pages   string    `json:"pages"`
+	Pages   int       `json:"pages"`
 	Author  string    `json:"author"`
 	Year    string    `json:"year"`
 	Rating  string    `json:"rating"`
