@@ -17,6 +17,9 @@ func GetWelcome(c *gin.Context) {
 
 //GetMaterials ... Get all users
 func GetMaterials(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+
 	var material []models.Material
 	err := models.GetAllMaterials(&material)
 	if err != nil {

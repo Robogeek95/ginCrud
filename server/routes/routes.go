@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/robogeek95/ginCrud/controllers"
 )
@@ -9,12 +8,6 @@ import (
 // SetupRouter ... setup the router
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
-
-	// same as
-	// config := cors.DefaultConfig()
-	// config.AllowAllOrigins = true
-	// router.Use(cors.New(config))
-	r.Use(cors.Default())
 
 	group := r.Group("/api/v1/")
 	{
