@@ -10,6 +10,9 @@ import (
 
 // GetWelcome shows greeting message
 func GetWelcome(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+
 	message := "Hello world :)..."
 
 	c.JSON(http.StatusOK, message)
@@ -32,6 +35,9 @@ func GetMaterials(c *gin.Context) {
 
 //CreateMaterial ... Create User
 func CreateMaterial(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+
 	var material models.Material
 	c.BindJSON(&material)
 	err := models.CreateMaterial(&material)
@@ -45,6 +51,9 @@ func CreateMaterial(c *gin.Context) {
 
 //GetMaterialByID ... Get the material by id
 func GetMaterialByID(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+
 	id := c.Params.ByName("id")
 	var material models.Material
 	err := models.GetMaterialByID(&material, id)
@@ -57,6 +66,9 @@ func GetMaterialByID(c *gin.Context) {
 
 // UpdateMaterial ... update a material by id
 func UpdateMaterial(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+
 	id := c.Params.ByName("id")
 	var material models.Material
 
@@ -80,6 +92,9 @@ func UpdateMaterial(c *gin.Context) {
 
 // DeleteMaterial ... delete a material by id
 func DeleteMaterial(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+
 	var material models.Material
 	id := c.Params.ByName("id")
 	err := models.DeleteMaterial(&material, id)

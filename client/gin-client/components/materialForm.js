@@ -31,20 +31,10 @@ export default function MaterialForm(props) {
       rating: data.rating,
     },
     onSubmit: async (values) => {
-      // alert(JSON.stringify(values, null, 2));
-      // await axios
-      //   .put(`http://localhost:8080/api/v1/materials/${data.id}`, values)
-      //   .then((res) => {
-      //     alert("data successfully updated");
-      //   })
-      //   .catch((err) => {
-      //     console.log("error", err);
-      //   });
-
-      axios
-        .get(`http://localhost:8080/api/v1/materials/`)
+      await axios
+        .put(`http://localhost:8080/api/v1/materials/${data.id}`, values)
         .then((res) => {
-          console.log(res.data);
+          alert("data successfully updated");
         })
         .catch((err) => {
           console.log("error", err);
