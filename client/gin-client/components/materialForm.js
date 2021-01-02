@@ -42,7 +42,7 @@ export default function MaterialForm(props) {
       //   });
 
       axios
-        .get(`http://localhost:8080/api/v1/materials`)
+        .get(`http://localhost:8080/api/v1`)
         .then((res) => {
           console.log(res.data);
         })
