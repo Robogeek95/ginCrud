@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"time"
 
 	// mysql driver
 	_ "github.com/go-sql-driver/mysql"
@@ -18,6 +19,9 @@ func GetAllMaterials(material *[]Material) (err error) {
 
 //CreateMaterial ... Insert New data
 func CreateMaterial(material *Material) (err error) {
+	material.Updated = time.Now()
+	material.Created = time.Now()
+
 	if err = config.DB.Create(material).Error; err != nil {
 		return err
 	}
@@ -34,6 +38,8 @@ func GetMaterialByID(material *Material, id string) (err error) {
 
 //UpdateMaterial ... Update user
 func UpdateMaterial(material *Material, id string) (err error) {
+	material.Updated = time.Now()
+
 	fmt.Println(material)
 	config.DB.Save(material)
 	return nil
