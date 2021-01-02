@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import { useRouter } from "next/router";
 import { Row, Container, Button, Form, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 import axios from "axios";
 
 export default function MaterialForm(props) {
+  const router = useRouter();
+
   let data = {
     name: "",
     pages: 0,
@@ -18,15 +21,25 @@ export default function MaterialForm(props) {
   }
 
   const confirmDelete = (e) => {
-    window.alert("are you sure?");
+    if (confirm("Are you sure about deleting this material?") == true) {
+      axios
+        .delete(
+          `http://localhost:8080/api/v1/materials/${data.id}`,
+          formik.values
+        )
+        .then((res) => {
+          console.log(res.data);
+          return router.push("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   const updateData = (e) => {
     axios
-      .delete(
-        `http://localhost:8080/api/v1/materials/${data.id}`,
-        formik.values
-      )
+      .put(`http://localhost:8080/api/v1/materials/${data.id}`, formik.values)
       .then((res) => {
         console.log(res.data);
         return res.data;
